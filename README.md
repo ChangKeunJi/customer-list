@@ -9,7 +9,7 @@
 4. API call. Got the random user datas from "https://randomapi.com".
 
 
-
+![customer-list](https://user-images.githubusercontent.com/46767604/67713347-94acd280-f9bd-11e9-8be7-befc32d23d7c.png)
 
 
 
