@@ -1,20 +1,18 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { User } from "../../module/User";
 import { ListService } from "../../service/list.service";
-import { MatSort, MatSortable, MatTableDataSource } from "@angular/material";
-import { DataSource } from "@angular/cdk/table";
+import { MatSort, MatTableDataSource, MatPaginator } from "@angular/material";
 
 @Component({
   selector: "app-lists",
   templateUrl: "./lists.component.html",
   styleUrls: ["./lists.component.css"]
-  // pipes: [FilterPipe]
 })
 export class ListsComponent implements OnInit {
   name: boolean = true;
   email: boolean = false;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource;
   displayedColumns = ["id", "name", "email", "phone"];
 
@@ -22,15 +20,17 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {
     this.listService.getUsers().subscribe(users => {
+      // Assign datas from API to this.dataSource
       this.dataSource = new MatTableDataSource(users.results);
+      this.dataSource.paginator = this.paginator;
 
-      ////! Filtering a name data
+      // Filtering a name data
 
       this.dataSource.filterPredicate = (data, filter: string) => {
         return data.name.last.toLowerCase().includes(filter.toLowerCase());
       };
 
-      ////! Sorting a data
+      // Sorting a data // I had to do some extra work since I used other properties for name and id.
       this.dataSource.sort = this.sort;
       this.dataSource.sortingDataAccessor = (item, property) => {
         if (property === "name") {
@@ -43,6 +43,8 @@ export class ListsComponent implements OnInit {
       };
     });
   }
+
+  /// Gets called by keyup event.
   applyFilter(filterValue: string) {
     if (!filterValue) this.dataSource.filter = "";
     else {
@@ -50,6 +52,7 @@ export class ListsComponent implements OnInit {
     }
   }
 
+  // Buttons for decide what to search. Name or Email
   activeEmail() {
     this.email = true;
     this.name = false;

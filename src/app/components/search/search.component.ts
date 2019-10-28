@@ -6,13 +6,15 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
   styleUrls: ["./search.component.css"]
 })
 export class SearchComponent implements OnInit {
-  @Output() nameEvent = new EventEmitter();
+  // Send input value to Parent Component; lists.component
+
+  @Output() termEvent = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  nameFilter(term) {
-    this.nameEvent.emit(term);
+  termFilter(term) {
+    this.termEvent.emit(term);
   }
 }
