@@ -14,7 +14,7 @@
 
   <!-- Search -->
   <app-search
-    (termEvent)="termTerm = $event"
+    (termEvent)="term = $event"
     (keyup)="applyFilter($event.target.value)"
   ></app-search>
 

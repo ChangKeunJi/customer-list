@@ -10,6 +10,7 @@ import { MatSort, MatTableDataSource, MatPaginator } from "@angular/material";
 export class ListsComponent implements OnInit {
   name: boolean = true;
   email: boolean = false;
+  term: string;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
