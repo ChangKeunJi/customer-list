@@ -2,7 +2,7 @@
 
 1. Sort user by id, name, email and phone number.
 
-2. Search user by name or email.
+2. Search user by name or email. (Choose the button name or email)
 
 3. Reuseable component. (Search bar / Lists)
 
