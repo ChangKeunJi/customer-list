@@ -1,6 +1,6 @@
 # Angular Project - Customer List -
 
-1. Sort user data by id, name, email and phone number.
+1. Sort user by id, name, email and phone number.
 
 2. Search user by name or email.
 
