@@ -21,17 +21,18 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {
     this.listService.getUsers().subscribe(users => {
-      // Assign datas from API to this.dataSource
+      // Assign the data from API to "this.dataSource"
       this.dataSource = new MatTableDataSource(users.results);
       this.dataSource.paginator = this.paginator;
 
-      // Filtering a name data
+      // Filtering the data / By default Search bar would filter the "name" of user.
+      // But, If you click the email button, It will do the "email" of user.
 
       this.dataSource.filterPredicate = (data, filter: string) => {
         return data.name.last.toLowerCase().includes(filter.toLowerCase());
       };
 
-      // Sorting a data // I had to do some extra work since I used other properties for name and id.
+      // Sorting the data // I had to do some extra work since I used other properties for name and id of.
       this.dataSource.sort = this.sort;
       this.dataSource.sortingDataAccessor = (item, property) => {
         if (property === "name") {
@@ -45,7 +46,7 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  /// Gets called by keyup event.
+  /// Gets called by "keyup" event and Make a new filterd list with input value of search bar.
   applyFilter(filterValue: string) {
     if (!filterValue) this.dataSource.filter = "";
     else {
@@ -57,6 +58,7 @@ export class ListsComponent implements OnInit {
   activeEmail() {
     this.email = true;
     this.name = false;
+    // Change search mode to email.
     this.dataSource.filterPredicate = (data, filter: string) => {
       return data.email.toLowerCase().includes(filter.toLowerCase());
     };
@@ -65,6 +67,7 @@ export class ListsComponent implements OnInit {
   activeName() {
     this.name = true;
     this.email = false;
+    // Change search mode to name.
     this.dataSource.filterPredicate = (data, filter: string) => {
       return data.name.last.toLowerCase().includes(filter.toLowerCase());
     };

@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-// Get the randome 100 users from "https://randomapi.com"
+// Get the randome 100 users from "Random User API" with name, email, phone number etc ...
 
 @Injectable({
   providedIn: "root"

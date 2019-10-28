@@ -6,7 +6,7 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
   styleUrls: ["./search.component.css"]
 })
 export class SearchComponent implements OnInit {
-  // Send input value to Parent Component; lists.component
+  // Send input value to Parent Component which is lists.component
 
   @Output() termEvent = new EventEmitter();
 
